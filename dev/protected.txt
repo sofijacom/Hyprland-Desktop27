@@ -1,4 +1,4 @@
 keyboard.conf
-monitor.conf
+custom.conf
+monitors.conf
 waypaper
-sidepad-active

@@ -1,11 +1,82 @@
+Version 2.11.2
+--------------------------------------------------------
+- New snapshot script for timeshift and grub-btrfs ~/.config/ml4w/scripts/ml4w-snapshot supporting Arch, Fedora based distros and openSuse Tumbleweed
+- New pacman update script for Arch to enable colors, parallel downloads and ILoveCandy ~/.config/ml4w/scripts/ml4w-pacman
+
+
+Version 2.11.1
+--------------------------------------------------------
+- Compatible with Hyprland 0.54.x
+- Neovim configuration moved to own repository https://github.com/mylinuxforwork/ml4w-nvim 
+- Install the ML4W nvim configuration from the Welcome App in Settings/Options or with ~/.config/ml4w/scripts/ml4w-install-nvim
+- New default icon theme kora-pgrey
+- Switched back to Bibata Cursor Theme
+- New keybinding: SUPER+SHIFT+M to toggle between dark and light mode
+- Hyprshade replaced with Hyprsunset. Configuration in ~./config/hypr/hyprsunset.conf (can be restored for updates)
+
+Version 2.11.0
+--------------------------------------------------------
+- The SDDM script can copy the current wallpaper to SDDM and use it as a background image. Start the script with ~/.config/ml4w/scripts/ml4w-install-sddm or from the Welcome App/Settings/Display Manager
+- New installation script based on the script based ML4W Dotfiles Installer
+- New Default Wallpaper
+
+Version 2.10.1
+--------------------------------------------------------
+- ML4W Logo added to fastfetch
+- Hide fastfetch by adding a file to ~/.config/ml4w/settings/hide-fastfetch
+- Add script to install sddm and the ml4w theme based on SilentSDDM ~/.config/ml4w/scripts/ml4w-install-sddm or from the Welcome App/Settings/Display Manager
+- IMPORTANT: Started to cleanup and renaming scripts in ~/.config/ml4w/scripts/ Please make sure that all your customization target to the new file names.
+
+Version 2.10.0
+--------------------------------------------------------
+- Project renamed to ML4W OS
+- Live ISO and installation script available (BETA)
+- btop is now using the matugen generated color theme
+- New Calendar App with the possibility to add events. CREDITS TO https://github.com/defaltastra
+- Cleaned up Welcome and Settings App
+
+Version 2.9.9.6
+--------------------------------------------------------
+- Glass and Transparent theme updated for Blur decoration. Can be set in the settings app.
+- Several fixes for Fedora 43 setup script
+- Global font set in nwg-look
+- Fix Quicklinks module in glass and transparent waybar theme
+
+Version 2.9.9.5
+--------------------------------------------------------
+- New windowrule syntax required for Hyprland 0.53.x
+- swww is the new default wallpaper engine. Please switch from hyprpaper to swww in waypaper in case of an Dotfiles update.
+- New Global Theme "transparent"
+- copr for Hyprland on Fedora replaced. Please run the setup script again with the Dotfiles Installer.
+- New Glass Center Waybar Theme with workspace selector in the center.
+
+Version 2.9.9.4
+--------------------------------------------------------
+- Global Theme support: CTRL+ALT+T to open the theme selector
+- New global glass theme
+- New Animation Smooth: You can select it in the Settings app.
+- Dock Auto-hide can be activated by adding a file dock-autohide into .config/ml4w/settings (BETA)
+- New Default Cursor Theme ArcAurora with two additional variants
+- Terminal CLI: Enter 'apps' to launch the launcher script
+- Terminal CLI: Enter 'screenshot' to launch the screenshot script
+- Terminal CLI: Enter 'finder' to launch a fuzzy finder script
+- Terminal CLI: Enter 'updates' to launch the update script
+- Terminal CLI: Enter 'filemanager' to launch yazi (to be installed separately)
+- Terminal CLI: Enter 'system' to launch btop
+- Terminal CLI: Enter 'lock' to lock the screen with hyprlock
+- Terminal CLI: Enter 'quick' to start the quicklinks script
+- Terminal CLI: Enter 'wallpaper' to start the wallpaper selector CLI
+- New screenshot configuration file names (without .sh) in ~/.config/ml4w/settings
+
 Version 2.9.9.3
 --------------------------------------------------------
 - New Default icons Colloid
-- Improved Waybar modern theme and minimal version
+- Improved Waybar modern theme and new minimal version
 - Reduced border size to 2px
-- Boder size of NWG Dock Hyprland can be modified in ~/.config/ml4w/settings/dock-border.css
-- Walker can be optionally activated as system-wide launcher. http://localhost:5173/dotfiles/configuration/walker
+- Border size of NWG Dock Hyprland can be modified in ~/.config/ml4w/settings/dock-border.css
+- Walker can be optionally activated as system-wide launcher (except screenshot). https://mylinuxforwork.github.io/dotfiles/configuration/walker
 - New default wallpaper
+- Arch setup script checks for installed AUR helper (yay or paru)
 
 Version 2.9.9.2
 --------------------------------------------------------

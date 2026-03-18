@@ -33,9 +33,9 @@ project_subfolder=$(jq -r '.subfolder' "$SCRIPT_DIR/$FIRST_FILE")
 
 # Configuration
 if [ -z "$project_subfolder" ]; then
-    SOURCE_DIR="$HOME/$project_source"
+    SOURCE_DIR=$(echo "$project_source" | envsubst)
 else
-    SOURCE_DIR="$HOME/$project_source/$project_subfolder"
+    SOURCE_DIR=$(echo "$project_source/$project_subfolder" | envsubst)
 fi
 TARGET_DIR="$HOME/.mydotfiles/$project_id"
 EVENTS="modify,create,delete,move"
@@ -61,7 +61,7 @@ while true; do
     echo ":: Change detected! Running sync now..."
     
     # Construct the base rsync command flags
-    RSYNC_CMD="rsync -azv --delete $DRY_RUN_FLAG"
+    RSYNC_CMD="rsync -azv --delete --exclude=config.dotinst $DRY_RUN_FLAG"
 
     # Add the exclude-from option if the file exists
     if [ -f "$EXCLUDE_FILE" ]; then

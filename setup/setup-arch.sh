@@ -35,20 +35,30 @@ packages=(
     "network-manager-applet"
     "imagemagick"
     "polkit-gnome"
-    "hyprshade"
     "grimblast-git"
     "pacman-contrib"
     "loupe"
     "power-profiles-daemon"
+    "hyprsunset"
     # Apps
     "waypaper"
     "swaync"
     # Tools
     "eza"
     "python-pywalfox"
+    "tesseract-data-eng"
     # Fonts
     "otf-font-awesome"
     "ttf-firacode-nerd"
+    "ttf-jetbrains-mono-nerd"
+    "tty-clock"
+    # Display Manager
+    "swww"
+    "qt6-svg"
+    "qt6-virtualkeyboard"
+    "qt6-multimedia-ffmpeg"
+    # System
+    "gvfs-mtp"
 )
 
 _isInstalled() {
@@ -250,6 +260,12 @@ source $SCRIPT_DIR/_fonts.sh
 # --------------------------------------------------------------
 
 source $SCRIPT_DIR/_icons.sh
+
+# --------------------------------------------------------------
+# Create XDG Directories
+# --------------------------------------------------------------
+
+xdg-user-dirs-update
 
 # --------------------------------------------------------------
 # Finish

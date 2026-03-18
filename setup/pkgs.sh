@@ -5,10 +5,15 @@ general=(
     "git"
     "rsync"
     "unzip"
+    "tar"
     "jq"
     "flatpak"
     "vim"
     "inotify-tools"
+    "gnome-themes-extra"
+    "udisks2"
+    "gvfs"
+    "udiskie"
 )
 
 hyprland=(
@@ -24,19 +29,22 @@ apps=(
     "wlogout"
     "vlc"
     "nwg-dock-hyprland"
+    "nwg-displays"
     "waybar"
-    "rofi-wayland"
+    "rofi"
     "nwg-look"
     "pavucontrol"
     "neovim"
     "blueman"
     "qt6ct"
     "nautilus"
+    "gnome-text-editor"
+    "firefox"
 )
 
 tools=(
-    "xdg-user-dirs"    
-    "xdg-desktop-portal-gtk"    
+    "xdg-user-dirs"
+    "xdg-desktop-portal-gtk"
     "figlet"
     "fastfetch"
     "htop"
@@ -50,4 +58,7 @@ tools=(
     "gvfs"
     "grim"
     "breeze"
+    "tesseract"
+    "wl-clipboard"
+    "btop"
 )

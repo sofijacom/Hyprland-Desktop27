@@ -31,10 +31,21 @@ packages=(
     "ImageMagick"
     "NetworkManager-connection-editor"
     "NetworkManager-tui"
+    "tesseract-ocr-traineddata-eng"
+    "hyprsunset"
     # Apps
     "SwayNotificationCenter"
     # Fonts
     "fontawesome-fonts"
+    # Display Manager
+    "sddm-qt6"
+    "libQt6Svg6"
+    "qt6-virtualkeyboard"
+    "qt6-virtualkeyboard-imports"
+    "qt6-multimedia"
+    "qt6-multimedia-imports"
+    # System
+    "gvfs-backend"
 )
 
 _isInstalled() {
@@ -128,9 +139,27 @@ curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
 
 source $SCRIPT_DIR/_prebuilt.sh
 
+# --------------------------------------------------------------
+# Install eza
+# --------------------------------------------------------------
+
 echo "Installing eza"
 sudo zypper ar https://download.opensuse.org/tumbleweed/repo/oss/ factory-oss
 sudo zypper -n install eza
+
+# --------------------------------------------------------------
+# Install swww
+# --------------------------------------------------------------
+
+sudo zypper addrepo https://download.opensuse.org/repositories/X11:Wayland/openSUSE_Tumbleweed/X11:Wayland.repo
+sudo zypper -n install swww
+
+# --------------------------------------------------------------
+# JetBrains Mono Nerd Font
+# --------------------------------------------------------------
+
+sudo zypper addrepo https://download.opensuse.org/repositories/X11:fonts/openSUSE_Factory/X11:fonts.repo
+sudo zypper -n install jetbrainsmono-nerd-fonts
 
 # --------------------------------------------------------------
 # Install waypaper dependencies before using pip
@@ -144,7 +173,6 @@ sudo zypper install gcc pkg-config cairo-devel gobject-introspection-devel libgi
 
 echo ":: Installing packages with pip"
 sudo zypper -n install python313-screeninfo
-pipx install hyprshade
 pipx install pywalfox
 pipx install waypaper
 
@@ -183,6 +211,12 @@ source $SCRIPT_DIR/_fonts.sh
 # --------------------------------------------------------------
 
 source $SCRIPT_DIR/_icons.sh
+
+# --------------------------------------------------------------
+# Create XDG Directories
+# --------------------------------------------------------------
+
+xdg-user-dirs-update
 
 # --------------------------------------------------------------
 # Finish
