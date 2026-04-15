@@ -191,7 +191,7 @@ window#waybar.empty #window {
 #custom-ml4w-welcome {
     margin-top:5px;
     margin-bottom:5px;
-    background-image: url("../assets/ml4w-icon.svg");
+    background-image: url("../../assets/ml4w-icon.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -383,6 +383,14 @@ window#waybar.empty #window {
 
 #tray {
     padding: 0px 5px 0px 10px;
+}
+
+#tray widget > image {
+  min-width: 28px;
+  border-radius: 14px;
+  margin: 4px 0px;
+  background-color: alpha(@primary, 0.2);
+  background-clip: padding-box;
 }
 
 #tray menu {
