@@ -1,4 +1,4 @@
-hl.on("hyprland.start", function () 
+hl.on("hyprland.start", function ()
     -- load plugin 
     hl.exec_cmd("hyprpm reload -n")
 
