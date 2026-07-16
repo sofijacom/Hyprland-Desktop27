@@ -14,39 +14,39 @@
     // Modules Left
     "modules-left": [
         "custom/appmenu",
-        "custom/wallpaper"
+        "hyprland/workspaces",
+        "custom/wallpaper",
+        "custom/waybarthemes",
+        "group/links",
+        "custom/screenshot",
+        "custom/recorder",
+        "custom/cpucat"
         //"wlr/taskbar",
         //"group/quicklinks",
         //"custom/nowplaying",        
     ],
     // Modules Center
     "modules-center": [
-        "hyprland/workspaces",
-        "custom/waybarthemes",
         //"group/quicklinks",
-        "group/links",
-        "tray",
-        "custom/screenshot",
-        "custom/recorder",
-        "custom/cliphist",
         //"wlr/taskbar",
         //"custom/nowplaying",        
         "hyprland/window",
-        "custom/settings",
-        "custom/cpucat",
-        "custom/updates",
-        "pulseaudio",
-        //"backlight",
-        "bluetooth",
-        "network",
-        "battery",
-        "group/hardware",
-        "clock",
-        "custom/widgets"
+        "custom/settings"
+        // "backlight",
+        // "network",
+        // "battery",
     ],
     // Modules Right    
     "modules-right": [
-        "custom/notification",
-        "custom/panel"
+        "custom/updates",
+        "tray",
+        // "bluetooth",
+        "pulseaudio",
+        "group/hardware",
+        "custom/cliphist",
+        "custom/widgets",
+        "custom/panel",
+        "clock",
+        "custom/notification"
     ]
 }

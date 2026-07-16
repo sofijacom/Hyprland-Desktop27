@@ -95,7 +95,7 @@
   },
   // ML4W Welcome App
   "custom/ml4w-welcome": {
-    "on-click": "flatpak run com.ml4w.sidebar",
+    "on-click": "qs ipc call sidebar toggle",
     "format": " ",
     "tooltip-format": "Open ML4W Sidebar App"
   },
@@ -109,7 +109,7 @@
   },
   // Tools
   "custom/tools": {
-    "format": "",
+    "format": "🛠",
     "tooltip-format": "Tools",
     "on-scroll-up": "true",
     "on-scroll-down": "true"
@@ -301,7 +301,7 @@
   "clock": {
     //"format": "{:%H:%M %a}",
     "format": "{:%Y-%m-%d  %H:%M}",
-    "on-click": "flatpak run com.ml4w.calendar",
+    "on-click": "qs ipc call calendar toggle",
     "tooltip": false
   },
   // system
@@ -380,7 +380,10 @@
     "modules": [
       "cpu",
       "disk",
-      "memory"
+      "memory",
+      "bluetooth",
+      "network",
+      "battery"
     ]
   },
   // Group Settings
@@ -429,7 +432,7 @@
       "critical": 15
     },
     "format": "{icon}{capacity}%",
-    "format-charging": "􀨣 {capacity}%",
+    "format-charging": "􀢋 {capacity}%",
     "format-plugged": "􀡷 {capacity}%",
     "format-alt": "{icon}{time}",
     // "format-good": "", // An empty format will hide the module
@@ -464,7 +467,7 @@
     "format-bluetooth-muted": "􀊢 {icon} 􀪷 {format_source}",
     "format-muted": "􀊢 {format_source}",
     "format-source": "{volume}% 􀊱",
-    "format-source-muted": "􀊳",
+    "format-source-muted": "􀊳 ",
     "format-icons": {
       "headphone": "􀑈 ",
       "hands-free": "􀺹 ",
