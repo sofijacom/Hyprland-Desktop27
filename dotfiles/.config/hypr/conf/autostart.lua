@@ -1,4 +1,25 @@
 hl.on("hyprland.start", function ()
+    local HOME = os.getenv("HOME")
+
+    -- Read wallpaper app setting
+    local wallpaper_app = "quickshell"
+    local f = io.open(HOME .. "/.config/ml4w/settings/wallpaper-app", "r")
+    if f then
+        wallpaper_app = f:read("*l"):match("^%s*(.-)%s*$")
+        f:close()
+    end
+
+
+    -- Export variables to systemd
+    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+
+    -- Restart portals so they catch the environment
+    hl.exec_cmd("systemctl --user stop xdg-desktop-portal xdg-desktop-portal-hyprland")
+    hl.exec_cmd("systemctl --user start xdg-desktop-portal-hyprland xdg-desktop-portal")
+
+    -- awww daemon
+    hl.exec_cmd("awww-daemon")
+
     -- load plugin 
     hl.exec_cmd("hyprpm reload -n")
 
@@ -11,14 +32,12 @@ hl.on("hyprland.start", function ()
     -- Start polkit daemon
     hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 
-    -- Restore wallpaper
-    hl.exec_cmd("~/.config/ml4w/scripts/ml4w-wallpaper-app --restore")
-
     -- start fcitx5
     hl.exec_cmd("fcitx5 --replace -d")
 
     -- hyprshell
     hl.exec_cmd("hyprshell run")
+
 
     -- vicinae
     hl.exec_cmd("vicinae server")
@@ -26,11 +45,20 @@ hl.on("hyprland.start", function ()
     -- Start wbar
     hl.exec_cmd("~/.local/bin/wbar")
 
-    -- Environment for xdg-desktop-portal-hyprland
-    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+    -- Start waybar
+    hl.exec_cmd(HOME .. "/.config/waybar/launch.sh")
+
+    -- hl.exec_cmd("~/.config/ml4w/scripts/ags.sh")
+    -- hl.exec_cmd("~/.config/hypr/scripts/eww.sh")
+    -- hl.exec_cmd("caelestia shell -d")
+
+    -- Restore wallpaper (skip for quickshell — handled inside ml4w-autostart)
+    if wallpaper_app ~= "quickshell" then
+        hl.exec_cmd("~/.config/ml4w/scripts/ml4w-wallpaper-app --restore")
+    end
 
     -- Autostart scripts
-    hl.exec_cmd("~/.config/ml4w/scripts/ml4w-autostart")
+    hl.exec_cmd("~/.config/ml4w/scripts/ml4w-autostart > ~/.mydotfiles/ml4w-autostart.log 2>&1")
 
     -- Load GTK settings
     hl.exec_cmd("~/.config/hypr/scripts/gtk.sh")
@@ -44,10 +72,6 @@ hl.on("hyprland.start", function ()
     -- Load cliphist history
     hl.exec_cmd("wl-paste --watch cliphist store")
 
-
-    -- hl.exec_cmd("~/.config/ml4w/scripts/ags.sh")
-    -- hl.exec_cmd("~/.config/hypr/scripts/eww.sh")
-    -- hl.exec_cmd("caelestia shell -d")
 
     -- Start autostart cleanup
     hl.exec_cmd("~/.config/hypr/scripts/cleanup.sh")
