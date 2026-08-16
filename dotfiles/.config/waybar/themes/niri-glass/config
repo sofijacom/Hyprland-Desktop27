@@ -14,37 +14,36 @@
     // Modules Left
     "modules-left": [
         "custom/appmenu",
-        "custom/wallpaper"
+        "custom/wallpaper",
+        "custom/waybarthemes",
+        "group/links",
+        "custom/screenshot",
+        "custom/recorder",
+        "custom/cliphist",
+        "custom/cpucat"
     ],
     // Modules Center
     "modules-center": [
         "niri/workspaces",
-        "custom/waybarthemes",
         //"wlr/taskbar",
         //"group/quicklinks",
         //"custom/nowplaying",        
-        "group/links",
-        "tray",
-        "custom/screenshot",
-        "custom/recorder",
-        "custom/cliphist",
         "niri/window",
         "custom/settings",
-        "custom/empty",
-        "custom/cpucat",
-        "custom/updates",
         "pulseaudio",
         //"backlight",
         "bluetooth",
         "network",
         "battery",
-        "group/hardware",
-        "clock",
-        "custom/widgets"
+        "group/hardware"
     ],
     // Modules Right    
     "modules-right": [
-        "custom/notification",
-        "custom/panel"
+        "custom/updates",
+        "tray",
+        "custom/widgets",
+        "custom/panel",
+        "clock",
+        "custom/notification"
     ]
 }

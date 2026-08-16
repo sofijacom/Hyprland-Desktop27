@@ -19,7 +19,7 @@ PanelWindow {
     implicitHeight: 380 
     color: "transparent"
 
-    // Anchored to the Upper Side
+    // Anchored to the top, horizontally centered (no left/right anchor).
     anchors {
         top: true
     }
@@ -74,9 +74,8 @@ PanelWindow {
     // Animate between your specific 87px top margin and off-screen (-800)
     property real currentTopMargin: isOpen ? 67 : -820 
 
-    margins { 
+    margins {
         top: root.currentTopMargin
-        left: 0
     }
 
     Behavior on currentTopMargin {
@@ -98,20 +97,43 @@ PanelWindow {
         target: "calendar"
         function toggle(): void { root.isOpen = !root.isOpen }
         function open(): void { root.isOpen = true }   
-        function close(): void { root.isOpen = false } 
+        function close(): void { root.isOpen = false }
+        function isOpen(): bool { return root.isOpen }
     }
 
     // --- REUSABLE COMPONENTS ---
     component ActionIcon: Button {
         property string iconTxt: ""
-        implicitWidth: 28  
+        property string iconSrc: ""
+        implicitWidth: 28
         implicitHeight: 28
-        text: iconTxt
-        font.family: "monospace"
         background: Rectangle { color: "transparent" }
-        contentItem: Text { 
-            text: parent.text; color: Theme.primary; font.pixelSize: 18; 
-            verticalAlignment: Text.AlignVCenter; horizontalAlignment: Text.AlignHCenter
+        contentItem: Item {
+            Text {
+                anchors.centerIn: parent
+                text: iconTxt
+                visible: iconSrc === ""
+                color: Theme.primary
+                font.family: "monospace"
+                font.pixelSize: 18
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+            }
+            Image {
+                anchors.centerIn: parent
+                source: iconSrc
+                width: 18
+                height: 18
+                sourceSize.width: 18
+                sourceSize.height: 18
+                visible: iconSrc !== ""
+                fillMode: Image.PreserveAspectFit
+                layer.enabled: iconSrc !== ""
+                layer.effect: MultiEffect {
+                    colorization: 1.0
+                    colorizationColor: Theme.primary
+                }
+            }
         }
     }
 
@@ -224,11 +246,23 @@ PanelWindow {
         Rectangle {
             id: mainBgRect
             anchors.fill: parent
-            color: Qt.alpha(Theme.background, 0.5)
-            border.color: Qt.alpha(Theme.shadow, 0.2)
-            border.width: 1
             radius: 14
             opacity: 0.9 // Only the background is transparent
+
+            // Gradient border (outer)
+            gradient: Gradient {
+                orientation: Gradient.Vertical
+                GradientStop { position: 0.0; color: Qt.alpha(Theme.primary, 0.2) }
+                GradientStop { position: 1.0; color: Qt.alpha(Theme.on_primary, 0.4) }
+            }
+
+            // Background fill (inner), inset by the border thickness
+            Rectangle {
+                anchors.fill: parent
+                anchors.margins: 2
+                radius: parent.radius - anchors.margins
+                color: Qt.alpha(Theme.background, 0.5)
+            }
         }
 
         ColumnLayout {
@@ -245,8 +279,8 @@ PanelWindow {
                     anchors.centerIn: parent
                     spacing: 5
                     
-                    ActionIcon { 
-                        iconTxt: "" 
+                    ActionIcon {
+                        iconSrc: "../shared/icons/chevron-left.svg"
                         onClicked: prevMonth()
                     }
                     
@@ -260,8 +294,8 @@ PanelWindow {
                         horizontalAlignment: Text.AlignHCenter
                     }
                     
-                    ActionIcon { 
-                        iconTxt: "" 
+                    ActionIcon {
+                        iconSrc: "../shared/icons/chevron-right.svg"
                         onClicked: nextMonth()
                     }
                 }

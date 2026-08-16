@@ -104,6 +104,19 @@ hl.window_rule({
     size = { 1000,  700 }
 })
 
+-- Picture-in-Picture
+hl.window_rule({
+    name = "Picture-in-Picture",
+    match = {
+        title = [[^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$]]
+    },
+    float = true,
+    pin = true,
+    focus_on_activate = false,
+    no_initial_focus = true,
+    suppress_event = "activate"
+})
+
 -- Wayland variables
 hl.env("OZONE_PLATFORM", "wayland")
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "wayland")
@@ -115,7 +128,6 @@ hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
 
--- XDG Desktop Portal
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")
@@ -158,3 +170,10 @@ hl.env("SDL_VIDEODRIVER", "wayland")
 
 -- Quickshell debug
 hl.env("QS_NO_RELOAD_POPUP", "1")
+
+-- Force zero scaling for XWayland
+hl.config({
+  xwayland = {
+    force_zero_scaling = true
+  }
+})

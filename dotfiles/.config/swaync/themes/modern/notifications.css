@@ -51,6 +51,9 @@
   border-radius: 0.8rem;
 }
 
+.floating-notifications.background .notification-row .notification-background .notification.critical {
+  border: 2px solid @error;
+
 .floating-notifications.background
   .notification-row
   .notification-background

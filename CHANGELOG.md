@@ -1,6 +1,22 @@
-Version 2.13.1
+Version 2.14.1
 --------------------------------------------------------
-- Add Dock autohide switch to sidebar.
+- The Quickshell statusbar can be configured in ~/.config/ml4w-statusbar/statusbar.json The file must be created individually. The full list of configuration options are available here: https://ml4w.com/os/ml4w-apps/statusbar
+- You can keep the status bar expanded with new setting "alwaysExpanded": true for the bar section. Also available as a toggle switch in the sidebar.
+- Flexible width for the statusbar if the width of "expandedWidth": 680 is not enough.
+- New status bar modules: Volume control, battery status, power profile plus submenu
+- Status Bar (Waybar or Quickshell) can be reloaded with SUPER + SHIFT + B and toggled with SUPER + CTRL + B
+- Added Network Manager Applet (nm-applet) to ml4w-autostart
+- Rofi menues can be closed by clicking outside of Rofi.
+
+Version 2.14.0
+--------------------------------------------------------
+- New optional Quickshell-based statusbar — activate in Sidebar, expand with hover or SUPER + SPACE
+- Added Dock autohide toggle to Sidebar
+- Multi-layout keyboard switching via ALT + SHIFT (configure layouts in input.lua, e.g. kb_layout = "de,us")
+- Toggle special workspace with SUPER + SHIFT + S
+- Navigate Powermenu options with arrow keys, confirm with Return
+- New SVG icons for Powermenu and Sidebar
+- Sidepad temporarily removed — will be replaced by a new scratchpad feature
 
 Version 2.13.0
 --------------------------------------------------------
